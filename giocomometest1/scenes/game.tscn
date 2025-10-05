@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxgmo7q8jjvd5"]
+
+[ext_resource type="PackedScene" uid="uid://6wipwklayjrv" path="res://scenes/player.tscn" id="1_ofggs"]
+[ext_resource type="PackedScene" uid="uid://dumgcw8hr8j63" path="res://scenes/wall.tscn" id="2_wuwbi"]
+[ext_resource type="PackedScene" uid="uid://bpaotlqe4j16f" path="res://scenes/death_zone.tscn" id="3_688mm"]
+[ext_resource type="PackedScene" uid="uid://s3tlxs0g3wr3" path="res://scenes/in_game_ui.tscn" id="4_avheh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6oxuc"]
+distance = -7.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hal6x"]
+
+[node name="game" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_ofggs")]
+position = Vector2(53, -7)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-3, 6)
+zoom = Vector2(4, 4)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visibility_layer = 3
+position = Vector2(0, -8)
+shape = SubResource("WorldBoundaryShape2D_6oxuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(238.183, 6.05107)
+scale = Vector2(-1032.35, -12.2246)
+texture = SubResource("CanvasTexture_hal6x")
+
+[node name="wall" parent="." instance=ExtResource("2_wuwbi")]
+position = Vector2(104, -96)
+
+[node name="death_zone2" parent="." instance=ExtResource("3_688mm")]
+position = Vector2(175, -90)
+
+[node name="wall2" parent="." instance=ExtResource("2_wuwbi")]
+position = Vector2(-194, -172)
+
+[node name="InGameUi" parent="." instance=ExtResource("4_avheh")]
