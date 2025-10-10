@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var walk_speed = 150.0
 @export var jump_velocity = -400.0
 @export var walljump = false
@@ -22,150 +21,148 @@ var is_crouching = false
 @export var hitbox_height = 16
 @export var hitbox_position = -0.5
 
-
+# Variabili per il dash (spostate a livello di classe)
+var is_dashing = false
+var dash_start_position = 0
+var dash_direction = 0
+var dash_timer = 0
+var can_uncrouch = false
 
 func charge_handler(delta):
 	Global.aggiorna_ui.emit("DioPorco")
-	
 
 func crouch_handler():
-	# Attiva hitbox crouch e cambia le dimensioni della hitbox normale
-	player_hitbox.shape.radius = player_crouch_hitbox.shape.radius
-	player_hitbox.shape.height = player_crouch_hitbox.shape.height
-	player_hitbox.position.y = player_crouch_hitbox.position.y
-	player_crouch_hitbox.disabled = false
-	is_crouching = true
+	if !is_crouching:
+		player_hitbox.shape.radius = player_crouch_hitbox.shape.radius
+		player_hitbox.shape.height = player_crouch_hitbox.shape.height
+		player_hitbox.position.y = player_crouch_hitbox.position.y
+		player_crouch_hitbox.disabled = false
+		is_crouching = true
+		can_uncrouch = false
+		
+		# Aspetta 2 secondi prima di permettere di alzarsi
+		await get_tree().create_timer(1.0).timeout
+		can_uncrouch = true
 
+func uncrouch():
+	if is_crouching and can_uncrouch:
+		player_hitbox.shape.radius = hitbox_radius
+		player_hitbox.shape.height = hitbox_height
+		player_hitbox.position.y = hitbox_position
+		player_crouch_hitbox.disabled = true
+		is_crouching = false
+		can_uncrouch = false
 
-#gestisce il dash
 func dash_handler(delta):
-	var is_dashing = false
-	var is_crashing = false
-	var dash_start_position = 0
-	var dash_direction = 0
-	var dash_timer = 0
-
-	var direction := Input.get_axis("left", "right")
-	#fa partire il dash
-	if Input.is_action_just_pressed("dash") and direction and not is_dashing and dash_timer <= 0:
+	# Controlla se premere dash mentre sei accovacciato (per alzarsi)
+	if Input.is_action_just_pressed("dash") and is_crouching and can_uncrouch:
+		uncrouch()
+		return
+	
+	# Fa partire il dash
+	if Input.is_action_just_pressed("dash") and direction and !is_dashing and dash_timer <= 0 and !is_crouching:
 		is_dashing = true
 		dash_start_position = position.x
 		dash_direction = direction
 		dash_timer = dash_cooldown
-		animated_sprite.flip_h = direction < 0
+		animated_sprite.flip_h = dash_direction < 0
 		animated_sprite.play("dash")
 		
 	if is_dashing:
-		#Controlla se è stata superata la distanza massima del dash
+		# Mantieni l'animazione dash
+		animated_sprite.play("dash")
+		
+		# Controlla se è stata superata la distanza massima del dash
 		var current_distance = abs(position.x - dash_start_position)
-		#ferma il dash
+		# Ferma il dash
 		if current_distance >= dash_max_distance or is_on_wall():
 			is_dashing = false
+			crouch_handler()  # Si accovaccia quando finisce il dash
 		else:
-			#aumenta la velocità in caso di dash
+			# Aumenta la velocità in caso di dash
 			velocity.x = dash_direction * dash_speed
 			velocity.y = 0
 
-		crouch_handler()
-
-	#Decrementa il timer del dash
+	# Decrementa il timer del dash
 	if dash_timer > 0:
 		dash_timer -= delta
-	
 
-#gestisce la corsa
 func run_handler():
-	var speed = walk_speed
-	if Input.is_action_pressed("run"):
-		speed = run_speed
-	direction = Input.get_axis("left", "right")
+	# Non cambiare animazione se stai dashando
+	if is_dashing:
+		return
 		
-	if (direction != 0):
+	if direction != 0:
 		animated_sprite.flip_h = direction < 0
-		if(Input.is_action_pressed("run")):
+		if !is_crouching:
 			animated_sprite.play("run")
-		velocity.x = move_toward(velocity.x, direction * speed, walk_speed * acceleration)
+		else:
+			animated_sprite.play("dash")
+
+		velocity.x = move_toward(velocity.x, direction * run_speed, walk_speed * acceleration)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
-		animated_sprite.play("idle")
-		
-		
-		
+		velocity.x = move_toward(velocity.x, 0, run_speed * deceleration)
+		if !is_crouching:
+			animated_sprite.play("idle")
+
 func jump_handler():
+	# Non permettere salti durante il dash
+	if is_dashing:
+		return
+		
 	direction = Input.get_axis("left", "right")
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
-		if(!Input.is_action_just_pressed("run")):
+		if !Input.is_action_just_pressed("run"):
 			animated_sprite.flip_h = direction < 0
-			animated_sprite.play("jump")
+			if !is_crouching:
+				animated_sprite.play("jump")
 		
-	#gestice l'aggrapparsi al muro
+	# Gestisce l'aggrapparsi al muro
 	if is_on_wall() and not Input.is_action_just_pressed("jump") and walljump == true:
 		velocity.y *= 0.9
 		animated_sprite.flip_h = direction < 0
-		animated_sprite.play("fall")
+		if !is_crouching:
+			animated_sprite.play("fall")
 	
-	#Gestisce il walljump
+	# Gestisce il walljump
 	if Input.is_action_just_pressed("jump") and is_on_wall() and walljump == true:
 		velocity.y = jump_velocity
-		if(!Input.is_action_just_pressed("run")):
+		if !Input.is_action_just_pressed("run"):
 			animated_sprite.flip_h = direction < 0
-			animated_sprite.play("jump")
+			if !is_crouching:
+				animated_sprite.play("jump")
 	
-	#gestisce la caduta dopo il salto
+	# Gestisce la caduta dopo il salto
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= decellerate_on_jump_release
 		animated_sprite.flip_h = direction < 0
-		animated_sprite.play("fall")
-		
+		if !is_crouching:
+			animated_sprite.play("fall")
 
-
-#sistema di danno DA COMPLETARE
 func take_damage(damage):
-	
-	#if damage_cooldown > 0:
-		#damage_cooldown -= delta
 	if health > 0 and damage_cooldown == 0:
 		health -= 10
 	else:
 		print("You died")
-		
-
-	
-
-
-
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	#imposta la direzione e le animazioni in caso di "inattività"
+	# Imposta la direzione e le animazioni in caso di "inattività"
 	direction = Input.get_axis("left", "right")
-	if(!Input.is_anything_pressed() and is_on_floor()):
+	if !Input.is_anything_pressed() and is_on_floor() and !is_crouching:
 		animated_sprite.flip_h = direction < 0
 		animated_sprite.play("idle")
-	elif(!Input.is_anything_pressed() and !is_on_floor()):
+	elif !Input.is_anything_pressed() and !is_on_floor() and !is_crouching:
 		animated_sprite.flip_h = direction < 0
 		animated_sprite.play("fall")
-	
-	#ripristina le hitbox dopo il dash
-	if(!Input.is_action_pressed("dash")):
-		player_hitbox.shape.radius = hitbox_radius
-		player_hitbox.shape.height = hitbox_height
-		player_hitbox.position.y = hitbox_position
-		player_crouch_hitbox.disabled = true
-		is_crouching = false
-		
 
-
-		
 	jump_handler()
 	run_handler()
 	dash_handler(delta)
 	charge_handler(delta)
 	move_and_slide()
-	

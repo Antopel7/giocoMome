@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://6wipwklayjrv"]
 
-[ext_resource type="Script" path="res://scripts/playerController.gd" id="1_gs3pi"]
-[ext_resource type="Script" path="res://scripts/HurtBox.gd" id="2_l7fkw"]
+[ext_resource type="Script" uid="uid://iyhvrnialvfl" path="res://scripts/playerController.gd" id="1_gs3pi"]
+[ext_resource type="Script" uid="uid://c5dglg5bo3x1h" path="res://scripts/HurtBox.gd" id="2_l7fkw"]
 [ext_resource type="Texture2D" uid="uid://d2vap2gajnn6j" path="res://sprites/Sprite_Base_MomeR.png" id="3_53x52"]
 [ext_resource type="Texture2D" uid="uid://c33rfa5525vu3" path="res://sprites/Sprite_Dash_MomeR.png" id="4_g6nli"]
 
