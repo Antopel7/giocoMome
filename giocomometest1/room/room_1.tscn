@@ -1,0 +1,697 @@
+[gd_scene load_steps=39 format=4 uid="uid://i0i1d0c5r8lx"]
+
+[ext_resource type="Texture2D" uid="uid://bud784yb6jbjs" path="res://sprites/world_tileset.png" id="1_b1ycl"]
+[ext_resource type="PackedScene" uid="uid://bpaotlqe4j16f" path="res://scenes/death_zone.tscn" id="1_qmepw"]
+[ext_resource type="PackedScene" uid="uid://ccp6p6v3clcn5" path="res://ostacoli/ghiaccioni/ghiaccione.tscn" id="2_hp10w"]
+[ext_resource type="PackedScene" uid="uid://6wipwklayjrv" path="res://scenes/player.tscn" id="3_lli1c"]
+[ext_resource type="PackedScene" uid="uid://bfnbvpu6e0hxm" path="res://ostacoli/platform.tscn" id="5_0eg3s"]
+[ext_resource type="Texture2D" uid="uid://bgdkcw8b132v2" path="res://ostacoli/sprite_waterz.png" id="5_wvjg8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hp10w"]
+texture = ExtResource("1_b1ycl")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+3:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+6:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lli1c"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_hp10w")
+
+[sub_resource type="Animation" id="Animation_lli1c"]
+resource_name = "move"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(175, 308), Vector2(175, 219), Vector2(175, 219), Vector2(176, 308)]
+}
+
+[sub_resource type="Animation" id="Animation_qmepw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(175, 219)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qmepw"]
+_data = {
+&"RESET": SubResource("Animation_qmepw"),
+&"move": SubResource("Animation_lli1c")
+}
+
+[sub_resource type="Animation" id="Animation_0eg3s"]
+resource_name = "movement"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(289, 308), Vector2(291, 191), Vector2(291, 191), Vector2(291, 191), Vector2(289, 308)]
+}
+
+[sub_resource type="Animation" id="Animation_wvjg8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(288, 193)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl2aw"]
+_data = {
+&"RESET": SubResource("Animation_wvjg8"),
+&"movement": SubResource("Animation_0eg3s")
+}
+
+[sub_resource type="Animation" id="Animation_vl2aw"]
+resource_name = "movement"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.6, 2.11, 2.7, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(401, 304), Vector2(401, 193), Vector2(401, 193), Vector2(401, 264), Vector2(401, 264), Vector2(401, 304), Vector2(401, 304)]
+}
+
+[sub_resource type="Animation" id="Animation_mwybh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(398, 308)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_64qeh"]
+_data = {
+&"RESET": SubResource("Animation_mwybh"),
+&"movement": SubResource("Animation_vl2aw")
+}
+
+[sub_resource type="Animation" id="Animation_64qeh"]
+resource_name = "movement"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(605, 316), Vector2(608, 192), Vector2(608, 192), Vector2(605, 316)]
+}
+
+[sub_resource type="Animation" id="Animation_dbxps"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(605, 316)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1mml"]
+_data = {
+&"RESET": SubResource("Animation_dbxps"),
+&"movement": SubResource("Animation_64qeh")
+}
+
+[sub_resource type="Animation" id="Animation_h1mml"]
+resource_name = "movement"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.04, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(607, 341), Vector2(608, 226), Vector2(608, 226), Vector2(607, 341)]
+}
+
+[sub_resource type="Animation" id="Animation_nnipp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(607, 341)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_35b1a"]
+_data = {
+&"RESET": SubResource("Animation_nnipp"),
+&"movement": SubResource("Animation_h1mml")
+}
+
+[sub_resource type="Animation" id="Animation_35b1a"]
+resource_name = "movement"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.4, 2.1, 2.7, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(398, 319), Vector2(398, 214), Vector2(398, 214), Vector2(401, 279), Vector2(401, 279), Vector2(401, 319), Vector2(401, 319)]
+}
+
+[sub_resource type="Animation" id="Animation_x1su3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(398, 319)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhpl7"]
+_data = {
+&"RESET": SubResource("Animation_x1su3"),
+&"movement": SubResource("Animation_35b1a")
+}
+
+[sub_resource type="Animation" id="Animation_22vl0"]
+resource_name = "movement"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(283, 327), Vector2(283, 213), Vector2(283, 214), Vector2(283, 327)]
+}
+
+[sub_resource type="Animation" id="Animation_bbs2b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(283, 327)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q62dm"]
+_data = {
+&"RESET": SubResource("Animation_bbs2b"),
+&"movement": SubResource("Animation_22vl0")
+}
+
+[sub_resource type="Animation" id="Animation_ud80x"]
+resource_name = "movement"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(175, 319), Vector2(170, 232), Vector2(170, 232), Vector2(175, 319)]
+}
+
+[sub_resource type="Animation" id="Animation_6r7hj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(170, 232)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uri0c"]
+_data = {
+&"RESET": SubResource("Animation_6r7hj"),
+&"movement": SubResource("Animation_ud80x")
+}
+
+[sub_resource type="Animation" id="Animation_yhpl7"]
+resource_name = "new_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(698, 128), Vector2(588, 128), Vector2(586, 128), Vector2(699, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_q62dm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(698, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ud80x"]
+_data = {
+&"RESET": SubResource("Animation_q62dm"),
+&"new_animation": SubResource("Animation_yhpl7")
+}
+
+[sub_resource type="Animation" id="Animation_g2xgk"]
+resource_name = "movement"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 2.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(698, -3), Vector2(585, -3), Vector2(585, -3), Vector2(698, -3), Vector2(698, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_4vo1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(698, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h0xi6"]
+_data = {
+&"RESET": SubResource("Animation_4vo1i"),
+&"movement": SubResource("Animation_g2xgk")
+}
+
+[node name="room1" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAHAAEAAAABAAAAAAAHAAEAAAACAAAAAAAHAAEAAAAEAAAAAAAHAAEAAAADAAAAAAAHAAEAAAAFAAAAAAAHAAEAAAAGAAAAAAAHAAEAAAAHAAAAAAAHAAEAAAAIAAAAAAAHAAEAAAAJAAAAAAAHAAEAAAAKAAAAAAAHAAEAAAALAAAAAAAHAAEAAAAQAP7/AAAGAAEAAAAQAP//AAAGAAEAAAAQAAAAAAAGAAEAAAAQAAEAAAAGAAEAAAAQAAIAAAAGAAEAAAAQAAMAAAAIAAEAAAAQAAQAAAAIAAEAAAAQAAUAAAAIAAEAAAALAAEAAAAGAAEAAAALAAIAAAAGAAEAAAAKAAIAAAAGAAEAAAAJAAIAAAAGAAEAAAAIAAIAAAAGAAEAAAAHAAIAAAAGAAEAAAAGAAIAAAAGAAEAAAAFAAIAAAAGAAEAAAAEAAIAAAAGAAEAAAADAAIAAAAGAAEAAAACAAIAAAAGAAEAAAABAAIAAAAGAAEAAAAAAAIAAAAGAAEAAAAPAAYAAAAGAAEAAAAOAAYAAAAGAAEAAAANAAYAAAAGAAEAAAAMAAYAAAAGAAEAAAALAAYAAAAGAAEAAAAQAAYAAAAGAAEAAAACAP//AAAHAAMAAAANAAUAAAAHAAMAAAATAP3/AAAGAAEAAAAAAAMAAAAGAAEAAAAAAAQAAAAGAAEAAAAAAAUAAAAGAAEAAAAAAAYAAAAGAAEAAAAAAAcAAAAGAAEAAAAAAAgAAAAGAAEAAAAAAAkAAAAGAAEAAAAAAAoAAAAGAAEAAAAAAAsAAAAGAAEAAAAAAAwAAAAGAAEAAAAAAA0AAAAGAAEAAAAAAA4AAAAGAAEAAAAAAA8AAAAGAAEAAAAAABAAAAAGAAEAAAAAABEAAAAGAAEAAAAAABIAAAAGAAEAAAAAABMAAAAGAAEAAAABABMAAAAGAAEAAAACABMAAAAGAAEAAAADABMAAAAGAAEAAAAEABMAAAAGAAEAAAAFABMAAAAGAAEAAAAGABMAAAAGAAEAAAAOABMAAAAGAAEAAAAPABMAAAAGAAEAAAAUABMAAAAGAAEAAAAVABMAAAAGAAEAAAAWABMAAAAGAAEAAAAXABMAAAAGAAEAAAAqABMAAAAGAAEAAAArABMAAAAGAAEAAAArABIAAAAGAAEAAAArABEAAAAGAAEAAAArABAAAAAGAAEAAAArAA8AAAAGAAEAAAArAA4AAAAGAAEAAAArAA0AAAAGAAEAAAArAAwAAAAGAAEAAAArAAsAAAAGAAEAAAArAAoAAAAGAAEAAAArAAkAAAAGAAEAAAArAAgAAAAGAAEAAAArAAcAAAAGAAEAAAAkAAYAAAAGAAEAAAAkAAUAAAAGAAEAAAArAP7/AAAHAAEAAAArAP//AAAGAAEAAAArAAAAAAAGAAEAAAArAAEAAAAGAAEAAAArAAIAAAAGAAEAAAArAAMAAAAGAAEAAAArAAQAAAAGAAEAAAArAAUAAAAGAAEAAAArAAYAAAAGAAEAAAAkAAEAAAAGAAEAAAAkAAIAAAAGAAEAAAAkAAMAAAAGAAEAAAAkAAQAAAAGAAEAAAARAAIAAAAGAAEAAAASAAIAAAAGAAEAAAATAAIAAAAGAAEAAAAUAAIAAAAGAAEAAAAVAAIAAAAGAAEAAAAWAAIAAAAGAAEAAAAXAAIAAAAGAAEAAAAYAAIAAAAGAAEAAAAZAAIAAAAGAAEAAAAaAAIAAAAGAAEAAAAbAAIAAAAGAAEAAAAcAAIAAAAGAAEAAAAdAAIAAAAGAAEAAAAdAAMAAAAGAAEAAAAdAAQAAAAGAAEAAAAdAAUAAAAGAAEAAAAdAAYAAAAGAAEAAAAeAAIAAAAGAAEAAAAfAAIAAAAGAAEAAAAgAAIAAAAGAAEAAAAhAAIAAAAGAAEAAAAiAAIAAAAGAAEAAAAjAAIAAAAGAAEAAAAQAP3/AAAGAAEAAAARAP3/AAAGAAEAAAASAP3/AAAGAAEAAAAWAP3/AAAHAAEAAAAXAP3/AAAHAAEAAAAYAP3/AAAHAAEAAAAZAP3/AAAHAAEAAAAaAP3/AAAHAAEAAAAbAP3/AAAHAAEAAAAcAP3/AAAHAAEAAAAdAP3/AAAHAAEAAAAeAP3/AAAHAAEAAAAfAP3/AAAHAAEAAAAgAP3/AAAHAAEAAAAhAP3/AAAHAAEAAAAiAP3/AAAHAAEAAAAjAP3/AAAHAAEAAAAkAP3/AAAHAAEAAAAlAP3/AAAHAAEAAAAmAP3/AAAHAAEAAAAnAP3/AAAHAAEAAAAoAP3/AAAHAAEAAAApAP3/AAAHAAEAAAAqAP3/AAAHAAEAAAArAP3/AAAHAAEAAAAkAP7/AAAGAAEAAAAjAP7/AAAGAAEAAAAiAP7/AAAGAAEAAAAhAP7/AAAGAAEAAAAgAP7/AAAGAAEAAAAfAP7/AAAGAAEAAAAeAP7/AAAGAAEAAAAbAP7/AAAGAAEAAAAcAP7/AAAGAAEAAAAdAP7/AAAGAAEAAAAbAAEAAAAGAAEAAAAcAAEAAAAGAAEAAAAdAAEAAAAGAAEAAAAeAAEAAAAGAAEAAAAfAAEAAAAGAAEAAAAgAAEAAAAGAAEAAAAhAAEAAAAGAAEAAAAiAAEAAAAGAAEAAAAjAAEAAAAGAAEAAAAqABQAAAAGAAEAAAAqABUAAAAGAAEAAAAiABUAAAAGAAEAAAAbABMAAAAGAAEAAAAaABMAAAAGAAEAAAAjABUAAAAGAAEAAAAkABUAAAAGAAEAAAApABUAAAAGAAEAAAAfABMAAAAGAAEAAAAfABQAAAAGAAEAAAAgABMAAAAGAAEAAAAgABQAAAAGAAEAAAAhABQAAAAGAAEAAAAhABMAAAAGAAEAAAAcABMAAAAGAAEAAAAdABMAAAAGAAEAAAAeABMAAAAGAAEAAAAdAA0AAAAGAAIAAAAeAA4AAAAGAAIAAAAdAA4AAAAGAAIAAAAeAA0AAAAGAAIAAAAoABUAAAAGAAEAAAAkABYAAAAGAAEAAAAkABcAAAAGAAEAAAAoABYAAAAGAAEAAAAoABcAAAAGAAEAAAAoABgAAAAGAAEAAAAkABgAAAAGAAEAAAAkABkAAAAGAAEAAAAoABkAAAAGAAEAAAAXABQAAAAGAAEAAAAXABUAAAAGAAEAAAAYABUAAAAGAAEAAAAZABUAAAAGAAEAAAAaABUAAAAGAAEAAAAaABQAAAAGAAEAAAATABMAAAAGAAEAAAATABQAAAAGAAEAAAATABUAAAAGAAEAAAASABUAAAAGAAEAAAARABUAAAAGAAEAAAAQABUAAAAGAAEAAAANABMAAAAGAAEAAAAMABMAAAAGAAEAAAALABUAAAAGAAEAAAAKABUAAAAGAAEAAAAJABUAAAAGAAEAAAAQABQAAAAGAAEAAAAQABMAAAAGAAEAAAAMABQAAAAGAAEAAAAMABUAAAAGAAEAAAAJABMAAAAGAAEAAAAJABQAAAAGAAEAAAAIABMAAAAGAAEAAAAHABMAAAAGAAEAAAAiABQAAAAGAAEAAAApABQAAAAGAAEAAAAQAPz/AAAGAAEAAAARAPz/AAAGAAEAAAASAPz/AAAGAAEAAAATAPz/AAAGAAEAAAARAAYAAAAGAAEAAAASAAYAAAAGAAEAAAATAAYAAAAGAAEAAAAUAAYAAAAGAAEAAAAVAAYAAAAGAAEAAAAXAAYAAAAGAAEAAAAYAAYAAAAGAAEAAAAZAAYAAAAGAAEAAAAaAAYAAAAGAAEAAAAbAAYAAAAGAAEAAAAcAAYAAAAGAAEAAAAeAAYAAAAGAAEAAAAfAAYAAAAGAAEAAAAgAAYAAAAGAAEAAAAiAAYAAAAGAAEAAAAhAAYAAAAGAAEAAAAjAAYAAAAGAAEAAAAkAAcAAAAGAAEAAAAkAAgAAAAGAAEAAAAkAAkAAAAGAAEAAAA=")
+tile_set = SubResource("TileSet_lli1c")
+
+[node name="player" parent="." instance=ExtResource("3_lli1c")]
+position = Vector2(71, -13)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="GHIACCIONI" type="Node" parent="."]
+
+[node name="ghiaccione" parent="GHIACCIONI" instance=ExtResource("2_hp10w")]
+position = Vector2(175, 219)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GHIACCIONI/ghiaccione"]
+libraries = {
+&"": SubResource("AnimationLibrary_qmepw")
+}
+autoplay = "move"
+
+[node name="ghiaccione2" parent="GHIACCIONI" instance=ExtResource("2_hp10w")]
+position = Vector2(288, 193)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GHIACCIONI/ghiaccione2"]
+libraries = {
+&"": SubResource("AnimationLibrary_vl2aw")
+}
+autoplay = "movement"
+
+[node name="ghiaccione3" parent="GHIACCIONI" instance=ExtResource("2_hp10w")]
+position = Vector2(398, 308)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GHIACCIONI/ghiaccione3"]
+libraries = {
+&"": SubResource("AnimationLibrary_64qeh")
+}
+autoplay = "movement"
+
+[node name="ghiaccione4" parent="GHIACCIONI" instance=ExtResource("2_hp10w")]
+position = Vector2(605, 316)
+scale = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GHIACCIONI/ghiaccione4"]
+libraries = {
+&"": SubResource("AnimationLibrary_h1mml")
+}
+autoplay = "movement"
+
+[node name="death zones" type="Node" parent="."]
+
+[node name="death_zone" parent="death zones" instance=ExtResource("1_qmepw")]
+position = Vector2(374, 214)
+scale = Vector2(0.6, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="death zones/death_zone"]
+position = Vector2(79.99996, 48.33333)
+scale = Vector2(7.9666657, 1.6999996)
+texture = ExtResource("5_wvjg8")
+
+[node name="death_zone2" parent="death zones" instance=ExtResource("1_qmepw")]
+position = Vector2(607, 341)
+scale = Vector2(0.1, 2.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="death zones/death_zone2"]
+libraries = {
+&"": SubResource("AnimationLibrary_35b1a")
+}
+autoplay = "movement"
+
+[node name="Sprite2D" type="Sprite2D" parent="death zones/death_zone2"]
+position = Vector2(59.999992, 48.095238)
+scale = Vector2(1.2, 1.6095237)
+texture = ExtResource("5_wvjg8")
+
+[node name="death_zone3" parent="death zones" instance=ExtResource("1_qmepw")]
+position = Vector2(398, 319)
+scale = Vector2(0.1, 1.4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="death zones/death_zone3"]
+libraries = {
+&"": SubResource("AnimationLibrary_yhpl7")
+}
+autoplay = "movement"
+
+[node name="Sprite2D" type="Sprite2D" parent="death zones/death_zone3"]
+position = Vector2(49.99989, 47.857147)
+scale = Vector2(1.3999977, 1.5857141)
+texture = ExtResource("5_wvjg8")
+
+[node name="death_zone4" parent="death zones" instance=ExtResource("1_qmepw")]
+position = Vector2(283, 327)
+scale = Vector2(0.1, 1.4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="death zones/death_zone4"]
+libraries = {
+&"": SubResource("AnimationLibrary_q62dm")
+}
+autoplay = "movement"
+
+[node name="Sprite2D" type="Sprite2D" parent="death zones/death_zone4"]
+position = Vector2(49.999863, 47.50001)
+scale = Vector2(1.3999997, 1.6500002)
+texture = ExtResource("5_wvjg8")
+
+[node name="death_zone5" parent="death zones" instance=ExtResource("1_qmepw")]
+position = Vector2(170, 232)
+scale = Vector2(0.1, 1.2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="death zones/death_zone5"]
+libraries = {
+&"": SubResource("AnimationLibrary_uri0c")
+}
+autoplay = "movement"
+
+[node name="Sprite2D" type="Sprite2D" parent="death zones/death_zone5"]
+position = Vector2(54.99995, 48.333317)
+scale = Vector2(1.2999991, 1.5999998)
+texture = ExtResource("5_wvjg8")
+
+[node name="death_zone6" parent="death zones" instance=ExtResource("1_qmepw")]
+position = Vector2(698, 128)
+scale = Vector2(1, 0.2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="death zones/death_zone6"]
+libraries = {
+&"": SubResource("AnimationLibrary_ud80x")
+}
+autoplay = "new_animation"
+
+[node name="Sprite2D" type="Sprite2D" parent="death zones/death_zone6"]
+position = Vector2(77.000015, 40)
+scale = Vector2(7.8, 1)
+texture = ExtResource("5_wvjg8")
+
+[node name="death_zone8" parent="death zones" instance=ExtResource("1_qmepw")]
+position = Vector2(698, -3)
+scale = Vector2(1, 0.2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="death zones/death_zone8"]
+libraries = {
+&"": SubResource("AnimationLibrary_h0xi6")
+}
+autoplay = "movement"
+
+[node name="Sprite2D" type="Sprite2D" parent="death zones/death_zone8"]
+position = Vector2(75.99999, 40)
+scale = Vector2(7.680001, 1)
+texture = ExtResource("5_wvjg8")
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="AnimatableBody2D" parent="platforms" instance=ExtResource("5_0eg3s")]
+position = Vector2(642, 157)
+
+[node name="AnimatableBody2D2" parent="platforms" instance=ExtResource("5_0eg3s")]
+position = Vector2(644, 108)
+
+[node name="AnimatableBody2D3" parent="platforms" instance=ExtResource("5_0eg3s")]
+position = Vector2(645, 60)
+
+[node name="AnimatableBody2D4" parent="platforms" instance=ExtResource("5_0eg3s")]
+position = Vector2(644, 17)

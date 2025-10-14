@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfnbvpu6e0hxm"]
+
+[ext_resource type="Texture2D" uid="uid://djqj0q271f8ad" path="res://ostacoli/ghiaccioni/Sprite_Ghiaccione.png" id="1_oyjlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqbs4"]
+size = Vector2(56, 7)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0.5)
+shape = SubResource("RectangleShape2D_fqbs4")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 22)
+texture = ExtResource("1_oyjlr")

@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var walk_speed = 150.0
-@export var jump_velocity = -400.0
+@export var jump_velocity = -300.0
 @export var walljump = false
-@export var run_speed = 300.0
+@export var run_speed = 200.0
 @export_range(0, 1) var acceleration = 0.1
 @export_range(0, 1) var deceleration = 0.1
 @export_range(0, 1) var decellerate_on_jump_release = 0.5
@@ -146,6 +146,7 @@ func take_damage(damage):
 		health -= 10
 	else:
 		print("You died")
+		get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.	

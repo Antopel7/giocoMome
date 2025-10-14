@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb8osg3g6bxdo"
-path="res://.godot/imported/knight.png-c78c026709c2736971ffc0a39338542e.ctex"
+uid="uid://djqj0q271f8ad"
+path="res://.godot/imported/Sprite_Ghiaccione.png-96b73353f67334d135046832912cab4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/knight.png"
-dest_files=["res://.godot/imported/knight.png-c78c026709c2736971ffc0a39338542e.ctex"]
+source_file="res://ostacoli/ghiaccioni/Sprite_Ghiaccione.png"
+dest_files=["res://.godot/imported/Sprite_Ghiaccione.png-96b73353f67334d135046832912cab4e.ctex"]
 
 [params]
 
