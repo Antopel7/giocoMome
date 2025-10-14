@@ -33,6 +33,7 @@ func charge_handler(delta):
 
 func crouch_handler():
 	if !is_crouching:
+		walk_speed -= 50 
 		player_hitbox.shape.radius = player_crouch_hitbox.shape.radius
 		player_hitbox.shape.height = player_crouch_hitbox.shape.height
 		player_hitbox.position.y = player_crouch_hitbox.position.y
@@ -46,6 +47,7 @@ func crouch_handler():
 
 func uncrouch():
 	if is_crouching and can_uncrouch:
+		
 		player_hitbox.shape.radius = hitbox_radius
 		player_hitbox.shape.height = hitbox_height
 		player_hitbox.position.y = hitbox_position
@@ -57,6 +59,7 @@ func dash_handler(delta):
 	# Controlla se premere dash mentre sei accovacciato (per alzarsi)
 	if Input.is_action_just_pressed("dash") and is_crouching and can_uncrouch:
 		uncrouch()
+		walk_speed += 50
 		return
 	
 	# Fa partire il dash
@@ -73,19 +76,25 @@ func dash_handler(delta):
 		animated_sprite.play("dash")
 		
 		# Controlla se è stata superata la distanza massima del dash
-		var current_distance = abs(position.x - dash_start_position)
+		#var current_distance = abs(position.x - dash_start_position)
 		# Ferma il dash
-		if current_distance >= dash_max_distance or is_on_wall():
-			is_dashing = false
-			crouch_handler()  # Si accovaccia quando finisce il dash
-		else:
-			# Aumenta la velocità in caso di dash
-			velocity.x = dash_direction * dash_speed
-			velocity.y = 0
+		#if current_distance >= dash_max_distance or is_on_wall():
+
+		velocity.x = move_toward(position.x, direction * (position.x + 700), dash_speed)
+		await get_tree().create_timer(1.0).timeout
+		is_dashing = false
+		
+		crouch_handler()  # Si accovaccia quando finisce il dash
+		#else:
+			## Aumenta la velocità in caso di dash
+			#velocity.x = dash_direction * dash_speed
+			#velocity.y = 0
 
 	# Decrementa il timer del dash
 	if dash_timer > 0:
 		dash_timer -= delta
+
+
 
 func run_handler():
 	# Non cambiare animazione se stai dashando
