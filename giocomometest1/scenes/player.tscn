@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://6wipwklayjrv"]
+[gd_scene load_steps=26 format=3 uid="uid://6wipwklayjrv"]
 
 [ext_resource type="Script" uid="uid://iyhvrnialvfl" path="res://scripts/playerController.gd" id="1_gs3pi"]
 [ext_resource type="Script" uid="uid://c5dglg5bo3x1h" path="res://scripts/HurtBox.gd" id="2_l7fkw"]
@@ -154,8 +154,12 @@ height = 8.0
 radius = 5.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
+size = Vector2(11, 16)
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_gs3pi")
+walljump = true
 dash_speed = 600.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -193,3 +197,10 @@ texture_filter = 1
 position = Vector2(0, -0.5)
 shape = SubResource("CapsuleShape2D_rofe0")
 one_way_collision_margin = 0.0
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(10.5, 0)
+shape = SubResource("RectangleShape2D_tuyoq")
+debug_color = Color(0.97228056, 0, 0.445436, 0.41960785)

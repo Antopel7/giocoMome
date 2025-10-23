@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://1drgvebn8b2j"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5h5ww"]
-[ext_resource type="Script" path="res://scripts/HitBox.gd" id="1_a8g6n"]
+[ext_resource type="Script" uid="uid://crhc5vyqvckun" path="res://scripts/enemy.gd" id="1_5h5ww"]
+[ext_resource type="Script" uid="uid://bkuacbhobj4uy" path="res://scripts/HitBox.gd" id="1_a8g6n"]
 [ext_resource type="Texture2D" uid="uid://cm8n4375raihy" path="res://sprites/slime_green.png" id="1_rihad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tfsw"]
