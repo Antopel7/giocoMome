@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8tph0doeilyt"]
+
+[ext_resource type="Script" uid="uid://caen7oksjag72" path="res://scripts/heatZone.gd" id="1_26ls1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6ic0"]
+size = Vector2(126.5, 76.5)
+
+[node name="HeatZone" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_26ls1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 2
+position = Vector2(92, 69)
+shape = SubResource("RectangleShape2D_u6ic0")
+debug_color = Color(0.8959459, 0.31528232, 0.111487366, 0.41960785)

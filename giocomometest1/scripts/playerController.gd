@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var direction := Input.get_axis("left", "right")
+var last_direction = 1  # Memorizza l'ultima direzione (1 = destra, -1 = sinistra)
 
 @export var walk_speed = 150.0
 @export var jump_velocity = -300.0
@@ -43,6 +44,45 @@ var is_attacking = false
 var attack_cooldown_timer = 0.0
 @export var attack_cooldown_time = 0.5
 
+# Area2D per rilevare le HeatZone (stessa logica dell'AttackArea)
+@onready var heat_detection_area = $HeatDetectionArea
+@onready var heat_detection_hitbox = $HeatDetectionArea/CollisionShape2D
+
+#Variabili Calorometro
+@export_range(0,100) var heat = 0
+@export var heat_increase = 20  # Aumento heat al secondo quando sei nella zona
+@export var heat_depletion = false
+@export var heat_decrease = 5   # Diminuzione heat al secondo quando sei fuori
+var is_heated = false
+var is_in_heat_zone = false  # TRUE quando il player è nella zona calda
+
+
+func heat_handler():
+	is_heated = true
+	heat += heat_increase
+
+# Chiamate dalla HeatZone quando il player entra/esce
+func enter_heat_zone():
+	is_in_heat_zone = true
+	print("Entrando nella zona calda!")
+
+func exit_heat_zone():
+	is_in_heat_zone = false
+	print("Uscendo dalla zona calda!")
+
+# Aggiorna il calore gradualmente
+func update_heat(delta):
+	if is_in_heat_zone:
+		# Aumenta rapidamente il calore quando sei nella zona
+		heat += heat_increase * delta
+		heat = clamp(heat, 0, 100)  # Limita tra 0 e 100
+	elif(heat_depletion):
+		# Diminuisce gradualmente il calore quando sei fuori
+		heat -= heat_decrease * delta
+		heat = clamp(heat, 0, 100)
+	
+	# Aggiorna l'UI se necessario
+	# Global.aggiorna_ui.emit("heat_updated")
 
 
 func charge_handler(delta):
@@ -191,6 +231,10 @@ func run_handler():
 	# Non cambiare animazione se stai dashando
 	if is_dashing:
 		return
+	
+	# Aggiorna last_direction quando c'è input
+	if direction != 0:
+		last_direction = direction
 		
 	if direction != 0:
 		animated_sprite.flip_h = direction < 0
@@ -202,8 +246,8 @@ func run_handler():
 		velocity.x = move_toward(velocity.x, direction * run_speed, walk_speed * acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, 0, run_speed * deceleration)
-		if !is_crouching:
-			animated_sprite.play("idle")
+		#if !is_crouching:
+			#animated_sprite.play("idle")
 
 func jump_handler():
 	# Non permettere salti durante il dash
@@ -211,18 +255,23 @@ func jump_handler():
 		return
 		
 	direction = Input.get_axis("left", "right")
+	
+	# Aggiorna last_direction quando c'è input
+	if direction != 0:
+		last_direction = direction
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		if !Input.is_action_just_pressed("run"):
-			animated_sprite.flip_h = direction < 0
+			animated_sprite.flip_h = last_direction < 0
 			if !is_crouching:
 				animated_sprite.play("jump")
 		
 	# Gestisce l'aggrapparsi al muro
 	if is_on_wall() and not Input.is_action_just_pressed("jump") and walljump == true:
 		velocity.y *= 0.9
-		animated_sprite.flip_h = direction < 0
+		animated_sprite.flip_h = last_direction < 0
 		if !is_crouching:
 			animated_sprite.play("fall")
 	
@@ -230,14 +279,14 @@ func jump_handler():
 	if Input.is_action_just_pressed("jump") and is_on_wall() and walljump == true:
 		velocity.y = jump_velocity
 		if !Input.is_action_just_pressed("run"):
-			animated_sprite.flip_h = direction < 0
+			animated_sprite.flip_h = last_direction < 0
 			if !is_crouching:
 				animated_sprite.play("jump")
 	
 	# Gestisce la caduta dopo il salto
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= decellerate_on_jump_release
-		animated_sprite.flip_h = direction < 0
+		animated_sprite.flip_h = last_direction < 0
 		if !is_crouching:
 			animated_sprite.play("fall")
 
@@ -261,26 +310,37 @@ func take_damage(damage):
 		can_take_damage = true
 
 func _physics_process(delta: float) -> void:
+	print(heat)
+
 	# Add the gravity SOLO se non stai dashando
 	if not is_on_floor() and !is_dashing:
 		velocity += get_gravity() * delta
 		
 	if attack_cooldown_timer > 0:
 		attack_cooldown_timer -= delta
-		
+	
 	
 	# Imposta la direzione e le animazioni in caso di "inattività"
 	direction = Input.get_axis("left", "right")
+	
+	# Aggiorna last_direction quando c'è input
+	if direction != 0:
+		last_direction = direction
+	
 	if !Input.is_anything_pressed() and is_on_floor() and !is_crouching:
-		animated_sprite.flip_h = direction < 0
+		animated_sprite.flip_h = last_direction < 0
 		animated_sprite.play("idle")
 	elif !Input.is_anything_pressed() and !is_on_floor() and !is_crouching:
-		animated_sprite.flip_h = direction < 0
+		animated_sprite.flip_h = last_direction < 0
 		animated_sprite.play("fall")
+		
+		
+
 
 	jump_handler()
 	run_handler()
 	dash_handler(delta)
 	attack_handler()
 	charge_handler(delta)
+	update_heat(delta)  # Aggiorna il calore ogni frame
 	move_and_slide()

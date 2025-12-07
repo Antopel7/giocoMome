@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://6wipwklayjrv"]
+[gd_scene load_steps=27 format=3 uid="uid://6wipwklayjrv"]
 
 [ext_resource type="Script" uid="uid://iyhvrnialvfl" path="res://scripts/playerController.gd" id="1_gs3pi"]
 [ext_resource type="Script" uid="uid://c5dglg5bo3x1h" path="res://scripts/HurtBox.gd" id="2_l7fkw"]
@@ -157,6 +157,10 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
 size = Vector2(11, 16)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
+radius = 5.0
+height = 16.0
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_gs3pi")
 walljump = true
@@ -173,7 +177,7 @@ texture_filter = 1
 position = Vector2(-0.12499976, -0.12499994)
 scale = Vector2(0.5078125, 0.5078125)
 sprite_frames = SubResource("SpriteFrames_4sie1")
-animation = &"idle"
+animation = &"dash"
 script = SubResource("GDScript_nhgn1")
 
 [node name="PlayerCrouchHitbox" type="Area2D" parent="."]
@@ -204,3 +208,9 @@ one_way_collision_margin = 0.0
 position = Vector2(10.5, 0)
 shape = SubResource("RectangleShape2D_tuyoq")
 debug_color = Color(0.97228056, 0, 0.445436, 0.41960785)
+
+[node name="HeatDetectionArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeatDetectionArea"]
+shape = SubResource("CapsuleShape2D_tuyoq")

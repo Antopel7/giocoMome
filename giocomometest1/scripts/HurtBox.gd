@@ -1,4 +1,4 @@
-class_name HuratBox
+class_name HurtBox
 extends Area2D
 
 func _init() -> void:

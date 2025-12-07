@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxgmo7q8jjvd5"]
+[gd_scene load_steps=9 format=3 uid="uid://bxgmo7q8jjvd5"]
 
 [ext_resource type="PackedScene" uid="uid://6wipwklayjrv" path="res://scenes/player.tscn" id="1_ofggs"]
 [ext_resource type="PackedScene" uid="uid://dumgcw8hr8j63" path="res://scenes/wall.tscn" id="2_wuwbi"]
 [ext_resource type="PackedScene" uid="uid://bpaotlqe4j16f" path="res://scenes/death_zone.tscn" id="3_688mm"]
 [ext_resource type="PackedScene" uid="uid://s3tlxs0g3wr3" path="res://scenes/in_game_ui.tscn" id="4_avheh"]
 [ext_resource type="PackedScene" uid="uid://1drgvebn8b2j" path="res://scenes/enemy.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://b8tph0doeilyt" path="res://scenes/heat_zone.tscn" id="6_p57ef"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6oxuc"]
 distance = -7.0
@@ -47,3 +48,6 @@ position = Vector2(-194, -172)
 
 [node name="enemy" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(-129, -11)
+
+[node name="HeatZone" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(-393, -97)
